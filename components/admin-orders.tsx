@@ -1,19 +1,12 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Search, Eye } from "lucide-react";
+import { useState } from "react"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Badge } from "@/components/ui/badge"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Search, Eye } from "lucide-react"
 
 const mockOrders = [
   {
@@ -48,18 +41,18 @@ const mockOrders = [
     status: "pending",
     date: "2024-01-12",
   },
-];
+]
 
 export function AdminOrders() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [orders] = useState(mockOrders);
+  const [searchTerm, setSearchTerm] = useState("")
+  const [orders] = useState(mockOrders)
 
   const filteredOrders = orders.filter(
     (order) =>
       order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
       order.customer.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      order.email.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+      order.email.toLowerCase().includes(searchTerm.toLowerCase()),
+  )
 
   return (
     <div className="space-y-6">
@@ -108,10 +101,10 @@ export function AdminOrders() {
                         order.status === "completed"
                           ? "default"
                           : order.status === "processing"
-                          ? "secondary"
-                          : order.status === "shipped"
-                          ? "outline"
-                          : "destructive"
+                            ? "secondary"
+                            : order.status === "shipped"
+                              ? "outline"
+                              : "destructive"
                       }
                     >
                       {order.status}
@@ -130,5 +123,5 @@ export function AdminOrders() {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

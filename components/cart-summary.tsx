@@ -38,7 +38,7 @@ export function CartSummary() {
 
         <div className="flex justify-between">
           <span>Shipping</span>
-          <span>{shipping === 0 ? "Free" : `₹${shipping.toFixed(2)}`}</span>
+          <span>{shipping === 0 ? "Free" : `${shipping.toFixed(2)}`}</span>
         </div>
 
         <div className="flex justify-between">

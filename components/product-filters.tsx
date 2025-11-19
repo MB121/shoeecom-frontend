@@ -1,85 +1,66 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Slider } from "@/components/ui/slider";
-import { Button } from "@/components/ui/button";
-import type { Product } from "@/types/product";
+import { useState, useEffect } from "react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Slider } from "@/components/ui/slider"
+import { Button } from "@/components/ui/button"
+import type { Product } from "@/types/product"
 
 interface ProductFiltersProps {
-  products: Product[];
-  onFilterChange: (filteredProducts: Product[]) => void;
+  products: Product[]
+  onFilterChange: (filteredProducts: Product[]) => void
 }
 
-export function ProductFilters({
-  products,
-  onFilterChange,
-}: ProductFiltersProps) {
-  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 500]);
-  const [inStockOnly, setInStockOnly] = useState(false);
+export function ProductFilters({ products, onFilterChange }: ProductFiltersProps) {
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([])
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([])
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 500])
+  const [inStockOnly, setInStockOnly] = useState(false)
 
   // Get unique values for filters
-  const brands = Array.from(new Set(products.map((p) => p.brand))).sort();
-  const categories = Array.from(
-    new Set(products.map((p) => p.category))
-  ).sort();
-  const sizes = Array.from(new Set(products.flatMap((p) => p.sizes))).sort();
-  const maxPrice = Math.max(...products.map((p) => p.price));
+  const brands = Array.from(new Set(products.map((p) => p.brand))).sort()
+  const categories = Array.from(new Set(products.map((p) => p.category))).sort()
+  const sizes = Array.from(new Set(products.flatMap((p) => p.sizes))).sort()
+  const maxPrice = Math.max(...products.map((p) => p.price))
 
   useEffect(() => {
-    let filtered = products;
+    let filtered = products
 
     // Filter by brands
     if (selectedBrands.length > 0) {
-      filtered = filtered.filter((p) => selectedBrands.includes(p.brand));
+      filtered = filtered.filter((p) => selectedBrands.includes(p.brand))
     }
 
     // Filter by categories
     if (selectedCategories.length > 0) {
-      filtered = filtered.filter((p) =>
-        selectedCategories.includes(p.category)
-      );
+      filtered = filtered.filter((p) => selectedCategories.includes(p.category))
     }
 
     // Filter by sizes
     if (selectedSizes.length > 0) {
-      filtered = filtered.filter((p) =>
-        p.sizes.some((size) => selectedSizes.includes(size))
-      );
+      filtered = filtered.filter((p) => p.sizes.some((size) => selectedSizes.includes(size)))
     }
 
     // Filter by price range
-    filtered = filtered.filter(
-      (p) => p.price >= priceRange[0] && p.price <= priceRange[1]
-    );
+    filtered = filtered.filter((p) => p.price >= priceRange[0] && p.price <= priceRange[1])
 
     // Filter by stock
     if (inStockOnly) {
-      filtered = filtered.filter((p) => p.inStock);
+      filtered = filtered.filter((p) => p.inStock)
     }
 
-    onFilterChange(filtered);
-  }, [
-    selectedBrands,
-    selectedCategories,
-    selectedSizes,
-    priceRange,
-    inStockOnly,
-    products,
-    onFilterChange,
-  ]);
+    onFilterChange(filtered)
+  }, [selectedBrands, selectedCategories, selectedSizes, priceRange, inStockOnly, products, onFilterChange])
 
   const clearFilters = () => {
-    setSelectedBrands([]);
-    setSelectedCategories([]);
-    setSelectedSizes([]);
-    setPriceRange([0, maxPrice]);
-    setInStockOnly(false);
-  };
+    setSelectedBrands([])
+    setSelectedCategories([])
+    setSelectedSizes([])
+    setPriceRange([0, maxPrice])
+    setInStockOnly(false)
+  }
 
   return (
     <div className="space-y-6">
@@ -99,16 +80,14 @@ export function ProductFilters({
           <div className="space-y-4">
             <Slider
               value={priceRange}
-              onValueChange={(value) =>
-                setPriceRange(value as [number, number])
-              }
+              onValueChange={(value) => setPriceRange(value as [number, number])}
               max={maxPrice}
               step={10}
               className="w-full"
             />
             <div className="flex items-center justify-between text-sm text-muted-foreground">
-              <span>₹{priceRange[0]}</span>
-              <span>₹{priceRange[1]}</span>
+              <span>${priceRange[0]}</span>
+              <span>${priceRange[1]}</span>
             </div>
           </div>
         </CardContent>
@@ -128,11 +107,9 @@ export function ProductFilters({
                   checked={selectedBrands.includes(brand)}
                   onCheckedChange={(checked) => {
                     if (checked) {
-                      setSelectedBrands([...selectedBrands, brand]);
+                      setSelectedBrands([...selectedBrands, brand])
                     } else {
-                      setSelectedBrands(
-                        selectedBrands.filter((b) => b !== brand)
-                      );
+                      setSelectedBrands(selectedBrands.filter((b) => b !== brand))
                     }
                   }}
                 />
@@ -159,18 +136,13 @@ export function ProductFilters({
                   checked={selectedCategories.includes(category)}
                   onCheckedChange={(checked) => {
                     if (checked) {
-                      setSelectedCategories([...selectedCategories, category]);
+                      setSelectedCategories([...selectedCategories, category])
                     } else {
-                      setSelectedCategories(
-                        selectedCategories.filter((c) => c !== category)
-                      );
+                      setSelectedCategories(selectedCategories.filter((c) => c !== category))
                     }
                   }}
                 />
-                <label
-                  htmlFor={category}
-                  className="text-sm cursor-pointer capitalize"
-                >
+                <label htmlFor={category} className="text-sm cursor-pointer capitalize">
                   {category}
                 </label>
               </div>
@@ -193,9 +165,9 @@ export function ProductFilters({
                 size="sm"
                 onClick={() => {
                   if (selectedSizes.includes(size)) {
-                    setSelectedSizes(selectedSizes.filter((s) => s !== size));
+                    setSelectedSizes(selectedSizes.filter((s) => s !== size))
                   } else {
-                    setSelectedSizes([...selectedSizes, size]);
+                    setSelectedSizes([...selectedSizes, size])
                   }
                 }}
               >
@@ -210,11 +182,7 @@ export function ProductFilters({
       <Card>
         <CardContent className="pt-6">
           <div className="flex items-center space-x-2">
-            <Checkbox
-              id="inStock"
-              checked={inStockOnly}
-              onCheckedChange={setInStockOnly}
-            />
+            <Checkbox id="inStock" checked={inStockOnly} onCheckedChange={setInStockOnly} />
             <label htmlFor="inStock" className="text-sm cursor-pointer">
               In Stock Only
             </label>
@@ -222,5 +190,5 @@ export function ProductFilters({
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

@@ -7,6 +7,8 @@ import { AdminDashboard } from "@/components/admin-dashboard";
 import { AdminProducts } from "@/components/admin-products";
 import { AdminOrders } from "@/components/admin-orders";
 import { AdminCustomers } from "@/components/admin-customers";
+import { AdminAnalytics } from "@/components/admin-analytics";
+import { AdminSettings } from "@/components/admin-settings";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/hooks/use-auth";
@@ -25,6 +27,10 @@ export default function AdminPage() {
         return <AdminOrders />;
       case "customers":
         return <AdminCustomers />;
+      case "analytics":
+        return <AdminAnalytics />;
+      case "settings":
+        return <AdminSettings />;
       default:
         return <AdminDashboard />;
     }

@@ -136,7 +136,7 @@ export default function WishlistPage() {
                         </div>
 
                         {/* Price */}
-                        <p className="font-bold text-lg">₹{item.price}</p>
+                        <p className="font-bold text-lg">${item.price}</p>
 
                         {/* Available Variants */}
                         {item.variants && item.variants.length > 0 && (

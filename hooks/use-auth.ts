@@ -64,42 +64,24 @@ export const useAuth = create<AuthStore>()(
     (set, get) => ({
       user: null,
       admin: null,
-
       login: async (email, password) => {
+        // Mock login - in real app, this would call your API
         if (email === "demo@example.com" && password === "demo123") {
-          set({
-            user: {
-              id: "1",
-              firstName: "Demo",
-              lastName: "User",
-              email,
-              addresses: [],
-              orders: [],
-            },
-          });
+          set({ user: mockUser });
           return true;
         }
 
         if (email === "admin@example.com" && password === "admin123") {
-          set({
-            admin: {
-              id: "2",
-              firstName: "Admin",
-              lastName: "User",
-              email,
-              addresses: [],
-              orders: [],
-            },
-          });
+          set({ admin: mockAdmin });
           return true;
         }
-
         return false;
       },
 
       register: async (firstName, lastName, email, password) => {
-        console.log("Registering user:", firstName, lastName, email);
+        // Mock registration - in real app, this would call your API
         const newUser: User = {
+          ...mockUser,
           id: Date.now().toString(),
           firstName,
           lastName,
@@ -108,17 +90,22 @@ export const useAuth = create<AuthStore>()(
           orders: [],
         };
         set({ user: newUser });
-        console.log("User registered:", newUser);
         return true;
       },
 
-      logout: () => set({ user: null, admin: null }),
+      logout: () => {
+        set({ user: null, admin: null });
+      },
 
       updateProfile: (updates) => {
         const currentUser = get().user;
-        if (currentUser) set({ user: { ...currentUser, ...updates } });
+        if (currentUser) {
+          set({ user: { ...currentUser, ...updates } });
+        }
       },
     }),
-    { name: "auth-storage" }
+    {
+      name: "auth-storage",
+    }
   )
 );

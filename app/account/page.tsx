@@ -84,13 +84,13 @@ export default function AccountPage() {
       id: "ORD-001",
       date: "2024-01-15",
       status: "Delivered",
-      total: 1290,
+      total: 129.99,
       items: [
         {
           name: "Nike Air Max 270",
           image: "/nike-air-max-270-white-sneakers.png",
           quantity: 1,
-          price: 1290,
+          price: 129.99,
         },
       ],
     },
@@ -98,13 +98,13 @@ export default function AccountPage() {
       id: "ORD-002",
       date: "2024-01-10",
       status: "Shipped",
-      total: 899,
+      total: 89.99,
       items: [
         {
           name: "Converse Chuck Taylor",
           image: "/converse-chuck-taylor-all-star-red-sneakers.png",
           quantity: 1,
-          price: 899,
+          price: 89.99,
         },
       ],
     },
@@ -427,7 +427,7 @@ export default function AccountPage() {
                               Placed on{" "}
                               {new Date(order.date).toLocaleDateString()}
                             </p>
-                            <p className="font-medium">₹{order.total}</p>
+                            <p className="font-medium">${order.total}</p>
                           </div>
                           <div className="flex gap-2">
                             <Button variant="outline" size="sm">
@@ -460,7 +460,7 @@ export default function AccountPage() {
                                   {item.name}
                                 </p>
                                 <p className="text-sm text-muted-foreground">
-                                  Qty: {item.quantity} • ₹{item.price}
+                                  Qty: {item.quantity} • ${item.price}
                                 </p>
                               </div>
                             </div>
@@ -500,7 +500,7 @@ export default function AccountPage() {
                             <p className="text-sm text-muted-foreground">
                               {item.brand}
                             </p>
-                            <p className="font-bold">₹{item.price}</p>
+                            <p className="font-bold">${item.price}</p>
                             <div className="flex gap-2">
                               <Button size="sm" className="flex-1">
                                 Add to Cart

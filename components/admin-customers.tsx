@@ -111,7 +111,7 @@ export function AdminCustomers() {
                   </TableCell>
                   <TableCell>{customer.email}</TableCell>
                   <TableCell>{customer.orders}</TableCell>
-                  <TableCell>₹{customer.totalSpent}</TableCell>
+                  <TableCell>${customer.totalSpent}</TableCell>
                   <TableCell>
                     <Badge
                       variant={

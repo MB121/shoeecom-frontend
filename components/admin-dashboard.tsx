@@ -43,15 +43,25 @@ const stats = [
 ];
 
 const recentOrders = [
-  { id: "#1234", customer: "John Doe", total: "₹129.99", status: "completed" },
+  { id: "#1234", customer: "John Doe", total: "₹1299.99", status: "completed" },
   {
     id: "#1235",
     customer: "Jane Smith",
-    total: "₹89.99",
+    total: "₹899.99",
     status: "processing",
   },
-  { id: "#1236", customer: "Bob Johnson", total: "₹199.99", status: "shipped" },
-  { id: "#1237", customer: "Alice Brown", total: "₹149.99", status: "pending" },
+  {
+    id: "#1236",
+    customer: "Bob Johnson",
+    total: "₹1999.99",
+    status: "shipped",
+  },
+  {
+    id: "#1237",
+    customer: "Alice Brown",
+    total: "₹1499.99",
+    status: "pending",
+  },
 ];
 
 export function AdminDashboard() {
