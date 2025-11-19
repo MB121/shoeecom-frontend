@@ -1,25 +1,34 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
-import { CheckCircle, Package, Truck, Mail, Download, ArrowRight } from "lucide-react"
-import Image from "next/image"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import {
+  CheckCircle,
+  Package,
+  Truck,
+  Mail,
+  Download,
+  ArrowRight,
+} from "lucide-react";
+import Image from "next/image";
 
 export default function OrderConfirmationPage() {
-  const [orderNumber] = useState(`ORD-${Math.random().toString(36).substr(2, 9).toUpperCase()}`)
+  const [orderNumber] = useState(
+    `ORD-${Math.random().toString(36).substr(2, 9).toUpperCase()}`
+  );
   const [estimatedDelivery] = useState(() => {
-    const date = new Date()
-    date.setDate(date.getDate() + 5)
+    const date = new Date();
+    date.setDate(date.getDate() + 5);
     return date.toLocaleDateString("en-US", {
       weekday: "long",
       year: "numeric",
       month: "long",
       day: "numeric",
-    })
-  })
+    });
+  });
 
   // Mock order data
   const orderData = {
@@ -46,13 +55,14 @@ export default function OrderConfirmationPage() {
       zipCode: "10001",
     },
     paymentMethod: "Visa ending in 4242",
-  }
+  };
 
   const nextSteps = [
     {
       icon: <Mail className="w-5 h-5" />,
       title: "Confirmation Email Sent",
-      description: "Check your inbox for order details and tracking information",
+      description:
+        "Check your inbox for order details and tracking information",
       completed: true,
     },
     {
@@ -67,7 +77,7 @@ export default function OrderConfirmationPage() {
       description: "Your order is on its way to you",
       completed: false,
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -78,9 +88,12 @@ export default function OrderConfirmationPage() {
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="w-10 h-10 text-green-600" />
             </div>
-            <h1 className="text-2xl lg:text-3xl font-bold mb-2">Order Confirmed!</h1>
+            <h1 className="text-2xl lg:text-3xl font-bold mb-2">
+              Order Confirmed!
+            </h1>
             <p className="text-muted-foreground">
-              Thank you for your purchase. Your order has been successfully placed.
+              Thank you for your purchase. Your order has been successfully
+              placed.
             </p>
           </div>
 
@@ -91,7 +104,9 @@ export default function OrderConfirmationPage() {
                 <CardHeader>
                   <CardTitle>Order Details</CardTitle>
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <p className="text-sm text-muted-foreground">Order #{orderNumber}</p>
+                    <p className="text-sm text-muted-foreground">
+                      Order #{orderNumber}
+                    </p>
                     <Badge variant="secondary">Processing</Badge>
                   </div>
                 </CardHeader>
@@ -99,9 +114,17 @@ export default function OrderConfirmationPage() {
                   {/* Order Items */}
                   <div className="space-y-4">
                     {orderData.items.map((item) => (
-                      <div key={item.id} className="flex gap-4 p-4 border rounded-lg">
+                      <div
+                        key={item.id}
+                        className="flex gap-4 p-4 border rounded-lg"
+                      >
                         <div className="relative w-16 h-16 rounded-md overflow-hidden bg-gray-100">
-                          <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-cover" />
+                          <Image
+                            src={item.image || "/placeholder.svg"}
+                            alt={item.name}
+                            fill
+                            className="object-cover"
+                          />
                         </div>
                         <div className="flex-1">
                           <h3 className="font-medium">{item.name}</h3>
@@ -112,7 +135,7 @@ export default function OrderConfirmationPage() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="font-medium">${item.price}</p>
+                          <p className="font-medium">₹{item.price}</p>
                         </div>
                       </div>
                     ))}
@@ -124,20 +147,24 @@ export default function OrderConfirmationPage() {
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span>Subtotal</span>
-                      <span>${orderData.subtotal}</span>
+                      <span>₹{orderData.subtotal}</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Shipping</span>
-                      <span>{orderData.shipping === 0 ? "Free" : `$${orderData.shipping}`}</span>
+                      <span>
+                        {orderData.shipping === 0
+                          ? "Free"
+                          : `₹${orderData.shipping}`}
+                      </span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Tax</span>
-                      <span>${orderData.tax}</span>
+                      <span>₹{orderData.tax}</span>
                     </div>
                     <Separator />
                     <div className="flex justify-between font-semibold">
                       <span>Total</span>
-                      <span>${orderData.total}</span>
+                      <span>₹{orderData.total}</span>
                     </div>
                   </div>
                 </CardContent>
@@ -148,12 +175,16 @@ export default function OrderConfirmationPage() {
             <div className="space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">Delivery Information</CardTitle>
+                  <CardTitle className="text-lg">
+                    Delivery Information
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
                     <h4 className="font-medium mb-2">Estimated Delivery</h4>
-                    <p className="text-sm text-muted-foreground">{estimatedDelivery}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {estimatedDelivery}
+                    </p>
                   </div>
 
                   <Separator />
@@ -164,7 +195,8 @@ export default function OrderConfirmationPage() {
                       <p>{orderData.shippingAddress.name}</p>
                       <p>{orderData.shippingAddress.address}</p>
                       <p>
-                        {orderData.shippingAddress.city}, {orderData.shippingAddress.state}{" "}
+                        {orderData.shippingAddress.city},{" "}
+                        {orderData.shippingAddress.state}{" "}
                         {orderData.shippingAddress.zipCode}
                       </p>
                     </div>
@@ -174,7 +206,9 @@ export default function OrderConfirmationPage() {
 
                   <div>
                     <h4 className="font-medium mb-2">Payment Method</h4>
-                    <p className="text-sm text-muted-foreground">{orderData.paymentMethod}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {orderData.paymentMethod}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -212,14 +246,28 @@ export default function OrderConfirmationPage() {
                   <div key={index} className="flex items-start gap-4">
                     <div
                       className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                        step.completed ? "bg-green-100 text-green-600" : "bg-muted text-muted-foreground"
+                        step.completed
+                          ? "bg-green-100 text-green-600"
+                          : "bg-muted text-muted-foreground"
                       }`}
                     >
-                      {step.completed ? <CheckCircle className="w-5 h-5" /> : step.icon}
+                      {step.completed ? (
+                        <CheckCircle className="w-5 h-5" />
+                      ) : (
+                        step.icon
+                      )}
                     </div>
                     <div className="flex-1">
-                      <h3 className={`font-medium ${step.completed ? "text-green-600" : ""}`}>{step.title}</h3>
-                      <p className="text-sm text-muted-foreground">{step.description}</p>
+                      <h3
+                        className={`font-medium ${
+                          step.completed ? "text-green-600" : ""
+                        }`}
+                      >
+                        {step.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {step.description}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -235,10 +283,16 @@ export default function OrderConfirmationPage() {
                 If you have any questions about your order, we're here to help.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Button variant="outline" onClick={() => (window.location.href = "/contact")}>
+                <Button
+                  variant="outline"
+                  onClick={() => (window.location.href = "/contact")}
+                >
                   Contact Support
                 </Button>
-                <Button variant="outline" onClick={() => (window.location.href = "/faq")}>
+                <Button
+                  variant="outline"
+                  onClick={() => (window.location.href = "/faq")}
+                >
                   View FAQ
                 </Button>
               </div>
@@ -247,5 +301,5 @@ export default function OrderConfirmationPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

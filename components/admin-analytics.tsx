@@ -54,7 +54,9 @@ export function AdminAnalytics() {
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-bold">Analytics Dashboard</h1>
-        <p className="text-muted-foreground">Overview of your store's performance</p>
+        <p className="text-muted-foreground">
+          Overview of your store's performance
+        </p>
       </div>
 
       {/* KPI Cards */}
@@ -111,7 +113,10 @@ export function AdminAnalytics() {
             <div className="h-[300px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={salesData}>
-                  <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    className="stroke-muted"
+                  />
                   <XAxis dataKey="name" className="text-sm" />
                   <YAxis className="text-sm" />
                   <Tooltip
@@ -123,7 +128,11 @@ export function AdminAnalytics() {
                     itemStyle={{ color: "hsl(var(--popover-foreground))" }}
                   />
                   <Legend />
-                  <Bar dataKey="sales" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
+                  <Bar
+                    dataKey="sales"
+                    fill="hsl(var(--primary))"
+                    radius={[4, 4, 0, 0]}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -171,7 +180,7 @@ export function AdminAnalytics() {
                       </div>
                     </div>
                     <span className="font-semibold text-sm">
-                      ${order.total.toFixed(2)}
+                      ₹{order.total.toFixed(2)}
                     </span>
                   </li>
                 ))}

@@ -427,7 +427,7 @@ export default function AccountPage() {
                               Placed on{" "}
                               {new Date(order.date).toLocaleDateString()}
                             </p>
-                            <p className="font-medium">${order.total}</p>
+                            <p className="font-medium">₹{order.total}</p>
                           </div>
                           <div className="flex gap-2">
                             <Button variant="outline" size="sm">
@@ -460,7 +460,7 @@ export default function AccountPage() {
                                   {item.name}
                                 </p>
                                 <p className="text-sm text-muted-foreground">
-                                  Qty: {item.quantity} • ${item.price}
+                                  Qty: {item.quantity} • ₹{item.price}
                                 </p>
                               </div>
                             </div>
@@ -500,7 +500,7 @@ export default function AccountPage() {
                             <p className="text-sm text-muted-foreground">
                               {item.brand}
                             </p>
-                            <p className="font-bold">${item.price}</p>
+                            <p className="font-bold">₹{item.price}</p>
                             <div className="flex gap-2">
                               <Button size="sm" className="flex-1">
                                 Add to Cart

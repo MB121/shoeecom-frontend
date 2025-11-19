@@ -9,84 +9,85 @@ import { Star, Heart } from "lucide-react";
 import { useCart } from "@/hooks/use-cart";
 import { useWishlist } from "@/hooks/use-wishlist";
 import type { Product } from "@/types/product";
+import { featuredProducts } from "@/lib/mock-data";
 
 // Mock featured products data
-const featuredProducts: Product[] = [
-  {
-    id: "1",
-    name: "Air Max Pro",
-    brand: "Nike",
-    price: 129.99,
-    originalPrice: 159.99,
-    images: ["/nike-air-max-sneakers-white-and-blue.png"],
-    category: "sports",
-    sizes: ["7", "8", "9", "10", "11"],
-    colors: ["White/Blue", "Black/Red", "Gray/Orange"],
-    rating: 4.5,
-    reviews: 128,
-    inStock: true,
-    description:
-      "Premium athletic sneakers with advanced cushioning technology.",
-    variants: [
-      { id: "1-1", size: "9", color: "White/Blue", stock: 5 },
-      { id: "1-2", size: "10", color: "White/Blue", stock: 3 },
-    ],
-  },
-  {
-    id: "2",
-    name: "Classic Leather Boot",
-    brand: "Timberland",
-    price: 189.99,
-    images: ["/brown-leather-boots-classic-style.png"],
-    category: "boots",
-    sizes: ["7", "8", "9", "10", "11", "12"],
-    colors: ["Brown", "Black", "Tan"],
-    rating: 4.8,
-    reviews: 89,
-    inStock: true,
-    description: "Durable leather boots perfect for any weather condition.",
-    variants: [
-      { id: "2-1", size: "9", color: "Brown", stock: 8 },
-      { id: "2-2", size: "10", color: "Brown", stock: 4 },
-    ],
-  },
-  {
-    id: "3",
-    name: "Running Elite",
-    brand: "Adidas",
-    price: 149.99,
-    images: ["/adidas-running-shoes-black-and-white.png"],
-    category: "sports",
-    sizes: ["6", "7", "8", "9", "10", "11"],
-    colors: ["Black/White", "Blue/Silver", "Red/Black"],
-    rating: 4.6,
-    reviews: 203,
-    inStock: true,
-    description: "High-performance running shoes with responsive cushioning.",
-    variants: [
-      { id: "3-1", size: "9", color: "Black/White", stock: 12 },
-      { id: "3-2", size: "10", color: "Black/White", stock: 7 },
-    ],
-  },
-  {
-    id: "4",
-    name: "Casual Canvas",
-    brand: "Converse",
-    price: 79.99,
-    images: ["/converse-canvas-sneakers-classic-style.png"],
-    category: "casual",
-    sizes: ["5", "6", "7", "8", "9", "10", "11"],
-    colors: ["White", "Black", "Red", "Navy"],
-    rating: 4.3,
-    reviews: 156,
-    inStock: true,
-    description: "Timeless canvas sneakers for everyday comfort and style.",
-    variants: [
-      { id: "4-1", size: "9", color: "White", stock: 15 },
-      { id: "4-2", size: "10", color: "White", stock: 10 },
-    ],
-  },
-];
+// const featuredProducts: Product[] = [
+//   {
+//     id: "1",
+//     name: "Air Max Pro",
+//     brand: "Nike",
+//     price: 129.99,
+//     originalPrice: 159.99,
+//     images: ["/nike-air-max-sneakers-white-and-blue.png"],
+//     category: "sports",
+//     sizes: ["7", "8", "9", "10", "11"],
+//     colors: ["White/Blue", "Black/Red", "Gray/Orange"],
+//     rating: 4.5,
+//     reviews: 128,
+//     inStock: true,
+//     description:
+//       "Premium athletic sneakers with advanced cushioning technology.",
+//     variants: [
+//       { id: "1-1", size: "9", color: "White/Blue", stock: 5 },
+//       { id: "1-2", size: "10", color: "White/Blue", stock: 3 },
+//     ],
+//   },
+//   {
+//     id: "2",
+//     name: "Classic Leather Boot",
+//     brand: "Timberland",
+//     price: 189.99,
+//     images: ["/brown-leather-boots-classic-style.png"],
+//     category: "boots",
+//     sizes: ["7", "8", "9", "10", "11", "12"],
+//     colors: ["Brown", "Black", "Tan"],
+//     rating: 4.8,
+//     reviews: 89,
+//     inStock: true,
+//     description: "Durable leather boots perfect for any weather condition.",
+//     variants: [
+//       { id: "2-1", size: "9", color: "Brown", stock: 8 },
+//       { id: "2-2", size: "10", color: "Brown", stock: 4 },
+//     ],
+//   },
+//   {
+//     id: "3",
+//     name: "Running Elite",
+//     brand: "Adidas",
+//     price: 149.99,
+//     images: ["/adidas-running-shoes-black-and-white.png"],
+//     category: "sports",
+//     sizes: ["6", "7", "8", "9", "10", "11"],
+//     colors: ["Black/White", "Blue/Silver", "Red/Black"],
+//     rating: 4.6,
+//     reviews: 203,
+//     inStock: true,
+//     description: "High-performance running shoes with responsive cushioning.",
+//     variants: [
+//       { id: "3-1", size: "9", color: "Black/White", stock: 12 },
+//       { id: "3-2", size: "10", color: "Black/White", stock: 7 },
+//     ],
+//   },
+//   {
+//     id: "4",
+//     name: "Casual Canvas",
+//     brand: "Converse",
+//     price: 79.99,
+//     images: ["/converse-canvas-sneakers-classic-style.png"],
+//     category: "casual",
+//     sizes: ["5", "6", "7", "8", "9", "10", "11"],
+//     colors: ["White", "Black", "Red", "Navy"],
+//     rating: 4.3,
+//     reviews: 156,
+//     inStock: true,
+//     description: "Timeless canvas sneakers for everyday comfort and style.",
+//     variants: [
+//       { id: "4-1", size: "9", color: "White", stock: 15 },
+//       { id: "4-2", size: "10", color: "White", stock: 10 },
+//     ],
+//   },
+// ];
 
 export function FeaturedProducts() {
   const [products, setProducts] = useState<Product[]>([]);

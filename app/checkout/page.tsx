@@ -469,7 +469,7 @@ export default function CheckoutPage() {
                           </div>
                           <div className="text-right">
                             <p className="font-medium">
-                              {option.price === 0 ? "Free" : `$${option.price}`}
+                              {option.price === 0 ? "Free" : `₹${option.price}`}
                             </p>
                           </div>
                         </div>
@@ -618,7 +618,7 @@ export default function CheckoutPage() {
                       <Button onClick={handlePlaceOrder} disabled={isLoading}>
                         {isLoading
                           ? "Processing..."
-                          : `Place Order - $${finalTotal.toFixed(2)}`}
+                          : `Place Order - ${finalTotal.toFixed(2)}`}
                       </Button>
                     </div>
                   </CardContent>
@@ -665,7 +665,7 @@ export default function CheckoutPage() {
                               Qty: {item.quantity}
                             </span>
                             <span className="font-medium text-sm">
-                              ${(item.price * item.quantity).toFixed(2)}
+                              ₹{(item.price * item.quantity).toFixed(2)}
                             </span>
                           </div>
                         </div>
@@ -679,24 +679,24 @@ export default function CheckoutPage() {
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span>Subtotal</span>
-                      <span>${subtotal?.toFixed(2)}</span>
+                      <span>₹{subtotal?.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Shipping</span>
                       <span>
                         {shippingCost === 0
                           ? "Free"
-                          : `$${shippingCost.toFixed(2)}`}
+                          : `₹${shippingCost.toFixed(2)}`}
                       </span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Tax</span>
-                      <span>${tax.toFixed(2)}</span>
+                      <span>₹{tax.toFixed(2)}</span>
                     </div>
                     <Separator />
                     <div className="flex justify-between font-semibold">
                       <span>Total</span>
-                      <span>${finalTotal.toFixed(2)}</span>
+                      <span>₹{finalTotal.toFixed(2)}</span>
                     </div>
                   </div>
                 </CardContent>
