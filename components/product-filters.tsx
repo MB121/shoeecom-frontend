@@ -19,7 +19,7 @@ export function ProductFilters({
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 500]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000]);
   const [inStockOnly, setInStockOnly] = useState(false);
 
   // Get unique values for filters

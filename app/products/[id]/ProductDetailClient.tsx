@@ -81,7 +81,11 @@ export default function ProductDetailClient({ product }: { product: Product }) {
           <div className="space-y-4">
             <div className="aspect-square relative overflow-hidden rounded-lg bg-gray-100">
               <Image
-                src={product.images?.[selectedImageIndex] || product?.images[0]}
+                src={
+                  product.images?.[selectedImageIndex] ||
+                  product?.images[0] ||
+                  "/placeholder.svg"
+                }
                 alt={product?.name}
                 fill
                 className="object-cover"

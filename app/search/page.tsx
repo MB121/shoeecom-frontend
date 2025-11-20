@@ -304,10 +304,10 @@ export default function SearchPage() {
                   <h3 className="font-medium mb-3">Price Range</h3>
                   <div className="space-y-2">
                     {[
-                      { value: "under-50", label: "Under ₹500" },
-                      { value: "50-100", label: "₹500 - ₹1000" },
-                      { value: "100-200", label: "₹1000 - ₹2000" },
-                      { value: "over-200", label: "Over ₹2000" },
+                      { value: "under-500", label: "Under ₹500" },
+                      { value: "500-1000", label: "₹500 - ₹1000" },
+                      { value: "1000-2000", label: "₹1000 - ₹2000" },
+                      { value: "over-2000", label: "Over ₹2000" },
                     ].map((range) => (
                       <label
                         key={range.value}
